@@ -6,11 +6,11 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/submit", methods=["POST"])
-def submit():
-    name = request.form.get("name")
-    print(f"Received input: {name}")
-    return f"Thanks, {name}!"
+# @app.route("/submit", methods=["POST"])
+# def submit():
+#     name = request.form.get("name")
+#     print(f"Received input: {name}")
+#     return f"Thanks, {name}!"
 
 if __name__ == "__main__":
     app.run()

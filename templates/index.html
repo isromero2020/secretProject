@@ -1,11 +1,98 @@
 <!DOCTYPE html>
-<html>
-<head><title>Flask Form</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typewriter Demo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #typedText {
+      font-size: 2em;
+      max-width: 80%;
+    }
+
+    #scrollPrompt {
+      margin-top: 20px;
+      font-size: 1.2em;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .hidden-section {
+      background: #f0f0f0;
+      padding: 40px;
+      display: none;
+    }
+
+    .visible {
+      display: block;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
 <body>
-  <h1>Submit Your Name</h1>
-  <form method="POST" action="/submit">
-    <input type="text" name="name" required>
-    <input type="submit" value="Send">
-  </form>
+
+  <!-- First section: typing animation -->
+  <div class="section">
+    <div>
+      <div id="typedText"></div>
+      <div id="scrollPrompt">⬇️ Scroll down to see more ⬇️</div>
+    </div>
+  </div>
+
+  <!-- Hidden section -->
+  <div id="moreContent" class="hidden-section section">
+    <h2>Welcome to the next section!</h2>
+    <p>This is the additional content that appears after scrolling.</p>
+  </div>
+
+  <script>
+    const text = "Welcome to my awesome website. Enjoy your stay!";
+    const typedText = document.getElementById("typedText");
+    const scrollPrompt = document.getElementById("scrollPrompt");
+    let index = 0;
+
+    function typeWriter() {
+      if (index < text.length) {
+        typedText.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 50); // speed of typing
+      } else {
+        scrollPrompt.style.opacity = 1; // show the scroll prompt
+      }
+    }
+
+    // Start typing when the page loads
+    window.onload = typeWriter;
+
+    // Show hidden section when user scrolls down
+    window.addEventListener("scroll", function() {
+      const moreContent = document.getElementById("moreContent");
+      const scrollY = window.scrollY;
+      if (scrollY > window.innerHeight / 2) {
+        moreContent.classList.add("visible");
+      }
+    });
+  </script>
+
 </body>
 </html>
