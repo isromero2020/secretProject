@@ -1,11 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head><title>I Love Harpreet</title></head>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>For Harpreet</title>
+
+<style type="text/css">
+.say-yes-btn {
+    background-color: #ff69b4; /* pink */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.say-yes-btn:hover {
+    background-color: #ff85c2;
+}
+</style>
+<link href="{{ url_for('static', filename='css/default.css') }}" rel="stylesheet">
+<script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='js/garden.js') }}"></script>
+<script src="{{ url_for('static', filename='js/functions.js') }}"></script>
+
+</head>
+  
 <body>
-  <h1>Submit Your Name</h1>
-  <form method="POST" action="/submit">
-    <input type="text" name="name" required>
-    <input type="submit" value="Send">
-  </form>
+<div id="mainDiv">
+	<div id="content">
+		<div id="code">
+			<span class="comments">Hey Pookie!</span><br />
+      Meeting you has been one of the best things to happen to me.<br />
+      I love your beautiful smile and patient heart,<br />
+      Your cloudy subtleties and cute little quirks,<br />
+      <span class="comments">*Even the way I repeat your funny words and phrases*</span><br />
+      I can't always understand how I got so lucky,<br/>
+      To be so blessed with such a strong and gentle soul.<br />
+      Someone who can bring out my light and make me so excited,<br/>
+      <span class="comments">*Yes even just to go to Trader Joe's*</span><br />
+      Someone who feels like a deep breath,<br />
+      Who feels like home.<br />
+      There is so much to look forward to with you,<br /> 
+      So here's to many more movie dates and new restaurants<br />
+      <span class="comments">*To many more hugs and sleepovers.*</span><br />
+      I'll do it all as long as it's with you.<br />
+      <br>
+      <br>
+      I love you Harpreet &lt3<br />
+      And I can't wait to see what the future holds for us.<br />
+      <br>
+      <br>
+      Now If you'd be so kind to say yes and finally let me call you my girlfriend<br />
+      <br>
+      <br/>
+			<span id="heartspan">
+        <form action="{{ url_for('make_girlfriend') }}" method="POST" style="display:inline;">
+          <button type="submit" class="say-yes-btn">Say Yes</button>
+        </form>
+      </span>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+if (!document.createElement('canvas').getContext) {
+    var msg = document.createElement("div");
+    msg.id = "errorMsg";
+    msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+    document.body.appendChild(msg);
+    $("#code").css("display", "none")
+    $("#copyright").css("position", "absolute");
+    $("#copyright").css("bottom", "10px");
+    document.execCommand("stop");
+} else {
+    $("#code").typewriter();
+}
+</script>
 </body>
 </html>
