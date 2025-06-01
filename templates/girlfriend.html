@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Since Start</title>
+    <link href="{{ url_for('static', filename='css/default.css') }}" rel="stylesheet">
+    <style>
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #timer {
+            font-size: 2em;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .heart {
+            color: #ff69b4;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="center-container">
+        <h1>We've been together for:</h1>
+        <div id="timer"></div>
+        <div class="heart"><i class="fa fa-heart"></i></div>
+    </div>
+    <script>
+        const startTime = {{ start_time }};
+        function updateTimer() {
+            const now = Date.now();
+            const diff = now - startTime;
+            const seconds = Math.floor(diff / 1000) % 60;
+            const minutes = Math.floor(diff / (1000 * 60)) % 60;
+            const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('timer').textContent =
+                days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
